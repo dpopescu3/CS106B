@@ -101,4 +101,4 @@ versionfile.path    =   "$${SPL_DIR}/lib"
     error(The CS106 library $$SPL_VERSION requires Qt version $$REQUIRES_QT_VERSION and\
          your computer has older Qt version $$[QT_VERSION]. You must uninstall Qt and install version $$REQUIRES_QT_VERSION or newer.)
 }
-QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Library at $$(date)\" && git push -u origin HEAD || true
+QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Library at \$$(date +%Y-%m-%d\ %H:%M:%S)\" && git push -u origin HEAD || true
