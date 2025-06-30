@@ -134,7 +134,7 @@ win32|win64 {
     }
 }
 
-# error if name of directory has chars that may cause trouble for qmake/make/shell
+# error if name of  s has chars that may cause trouble for qmake/make/shell
 PROJECT_DIR = $$basename(PWD)
 FOUND  = $$PROJECT_DIR
 FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & are dicey
@@ -149,6 +149,5 @@ FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & a
     message( "*******************************************************************" )
     error(Exiting. Rename project directory to remove disallowed characters. )
 
-
 }
-QMAKE_PRE_LINK += cd $$PWD && git add . && git commit -m \"Auto-commit from Welcome at $$(date)\" && git push || true
+QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Welcome at $$(date)\" && git push || true
