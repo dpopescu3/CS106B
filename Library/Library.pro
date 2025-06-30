@@ -66,7 +66,7 @@ develop_mode {
 #       Make install                                                          #
 ###############################################################################
 
-# Use makefile include to set default goal to install target
+# Use makefile include t set default goal to install target
 QMAKE_EXTRA_INCLUDES += $$relative_path($$absolute_path(assume_install.mk), $$OUT_PWD)
 
 win32|win64 { QTP_EXE = qtpaths.exe } else { QTP_EXE = qtpaths }
@@ -101,4 +101,4 @@ versionfile.path    =   "$${SPL_DIR}/lib"
     error(The CS106 library $$SPL_VERSION requires Qt version $$REQUIRES_QT_VERSION and\
          your computer has older Qt version $$[QT_VERSION]. You must uninstall Qt and install version $$REQUIRES_QT_VERSION or newer.)
 }
-QMAKE_PRE_LINK += cd $$PWD && git add . && git commit -m \"Auto-commit from Library at $$(date)\" && git push || true
+QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Library at $$(date)\" && git push || true
