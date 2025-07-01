@@ -73,7 +73,7 @@ int main()
     Queue<string> names = {"Leland", "Stanford", "Junior", "University"};
     cout << "Copyright 2024 " << names << endl;
     checkLibraryVersion();
-    string name = getLine("What is your name?");
+    string name = getLine("What is your name? I am asking");
     welcomeAlert(name);
     cout << "All done!" << endl;
     return 0;
