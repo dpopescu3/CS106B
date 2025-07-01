@@ -138,6 +138,7 @@ win32|win64 {
 PROJECT_DIR = $$basename(PWD)
 FOUND  = $$PROJECT_DIR
 FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & are dicey
+# this is a comment
 !isEmpty(FOUND) {
     message( "*******************************************************************" )
     message( "*** ERROR: The name of your project directory has disallowed characters." )
@@ -148,6 +149,5 @@ FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & a
     message( "*** no disallowed characters." )
     message( "*******************************************************************" )
     error(Exiting. Rename project directory to remove disallowed characters. )
-//haha
 }
 QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Welcome at \$$(date +%Y-%m-%d\ %H:%M:%S)\" && git push -u origin HEAD || true
