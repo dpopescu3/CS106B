@@ -79,6 +79,7 @@ int main()
     cout << "All done!" << endl;
     return 0;
 }
+// I am adding a comment
 
 // Confirm SimpleTest macros are available and compile
 PROVIDED_TEST("SimpleTest of addition") {
