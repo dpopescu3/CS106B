@@ -20,7 +20,7 @@
 #include "urlstream.h"
 using namespace std;
 
-void welcomeAlert(string name)
+void welcomeAlert(string name, string name2)
 {
     GWindow* window = new GWindow;
     window->setTitle("Welcome");
@@ -74,7 +74,8 @@ int main()
     cout << "Copyright 2024 " << names << endl;
     checkLibraryVersion();
     string name = getLine("What is your name? I am asking");
-    welcomeAlert(name);
+    string name2 = getLine("What is your name? I am asking");
+    welcomeAlert(name, name2);
     cout << "All done!" << endl;
     return 0;
 }
