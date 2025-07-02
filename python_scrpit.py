@@ -45,7 +45,7 @@ def count_comments_and_code_from_text(text):
             comment_count += 1
             continue
 
-        quote_free = re.sub(r'"[^"]*"', '', stripped)
+        quote_free = re.sub(r'\"[^\"]*\"', '', stripped)
         if '//' in quote_free:
             comment_count += 1
             continue
@@ -77,13 +77,12 @@ def count_new_comments_from_diff(diff_text):
                 file_comments[current_file] += 1
                 continue
 
-            if '//' in re.sub(r'"[^"]*"', '', content):
+            if '//' in re.sub(r'\"[^\"]*\"', '', content):
                 file_comments[current_file] += 1
 
     return file_comments
 
 def get_commit_unix_timestamp(repo_path, commit_hash):
-    """Returns commit time as an integer Unix timestamp (seconds since epoch)"""
     timestamp = run_git_command(['show', '-s', '--format=%ct', commit_hash], repo_path)
     return int(timestamp)
 
@@ -104,7 +103,6 @@ def analyze_git_history_by_file(repo_path, subdirectory):
                 'new_comments': 0
             }
 
-        # Compute diffs
         if i < len(commits) - 1:
             diff_output = run_git_command(['diff', f'{commits[i+1]}', f'{commit}', '--', subdirectory], repo_path)
             file_comment_diffs = count_new_comments_from_diff(diff_output)
@@ -137,26 +135,20 @@ def save_history_grouped_by_file_with_unix_timestamps(commit_data, repo_path, fi
         commit_ts = get_commit_unix_timestamp(repo_path, commit_hash)
         for file_path, stats in files.items():
             if file_path not in file_history:
-                file_history[file_path] = {
-                    "timestamp": commit_ts,
-                    "data": []
-                }
+                file_history[file_path] = {"data": []}
 
             file_history[file_path]["data"].append({
                 "commit": commit_hash,
+                "timestamp": commit_ts,
                 "comments": stats["comments"],
                 "loc": stats["loc"],
                 "changed": stats["changed"],
                 "new_comments": stats["new_comments"]
             })
 
-            # Update if newer timestamp
-            if commit_ts > file_history[file_path]["timestamp"]:
-                file_history[file_path]["timestamp"] = commit_ts
-
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(file_history, f, indent=2)
-    print(f"\n✅ JSON report with Unix timestamps saved to: {filename}")
+    print(f"\n✅ JSON report with per-commit timestamps saved to: {filename}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -177,4 +169,3 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
-
