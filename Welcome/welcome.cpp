@@ -77,6 +77,7 @@ int main()
     string name2 = getLine("What is your name? I am asking");
     welcomeAlert(name, name2);
     cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
     return 0;
 }
 // I am adding a comment
