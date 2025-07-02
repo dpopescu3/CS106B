@@ -1,7 +1,5 @@
 import subprocess
-import tempfile
 import os
-import shutil
 import re
 import sys
 import json
@@ -84,6 +82,11 @@ def count_new_comments_from_diff(diff_text):
 
     return file_comments
 
+def get_commit_unix_timestamp(repo_path, commit_hash):
+    """Returns commit time as an integer Unix timestamp (seconds since epoch)"""
+    timestamp = run_git_command(['show', '-s', '--format=%ct', commit_hash], repo_path)
+    return int(timestamp)
+
 def analyze_git_history_by_file(repo_path, subdirectory):
     commits = get_all_commits(repo_path)
     commit_data = defaultdict(dict)
@@ -127,11 +130,19 @@ def print_detailed_report(commit_data):
         for file, data in files.items():
             print(f"{commit[:7]:<10} {file:<40} {data['comments']:>8} {data['loc']:>8} {data['changed']:>10} {data['new_comments']:>14}")
 
-def save_history_grouped_by_file(commit_data, filename="comment_file_history.json"):
-    file_history = defaultdict(list)
+def save_history_grouped_by_file_with_unix_timestamps(commit_data, repo_path, filename="comment_file_history.json"):
+    file_history = {}
+
     for commit_hash, files in commit_data.items():
+        commit_ts = get_commit_unix_timestamp(repo_path, commit_hash)
         for file_path, stats in files.items():
-            file_history[file_path].append({
+            if file_path not in file_history:
+                file_history[file_path] = {
+                    "timestamp": commit_ts,
+                    "data": []
+                }
+
+            file_history[file_path]["data"].append({
                 "commit": commit_hash,
                 "comments": stats["comments"],
                 "loc": stats["loc"],
@@ -139,9 +150,13 @@ def save_history_grouped_by_file(commit_data, filename="comment_file_history.jso
                 "new_comments": stats["new_comments"]
             })
 
+            # Update if newer timestamp
+            if commit_ts > file_history[file_path]["timestamp"]:
+                file_history[file_path]["timestamp"] = commit_ts
+
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(file_history, f, indent=2)
-    print(f"\n✅ JSON report saved to: {filename}")
+    print(f"\n✅ JSON report with Unix timestamps saved to: {filename}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -158,7 +173,7 @@ if __name__ == "__main__":
     try:
         data = analyze_git_history_by_file(repo_path, subdirectory)
         print_detailed_report(data)
-        save_history_grouped_by_file(data)
+        save_history_grouped_by_file_with_unix_timestamps(data, repo_path)
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
