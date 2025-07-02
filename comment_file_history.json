@@ -1,0 +1,88 @@
+{
+  "Welcome/welcome.cpp": [
+    {
+      "commit": "56a1a988764dc47bd4da9dab657bd605edc257c8",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "7406c9e78af198e269c6e56be5b6f742f08b8364",
+      "comments": 5,
+      "loc": 69,
+      "changed": 1,
+      "new_comments": 0
+    },
+    {
+      "commit": "73863a6d23e1b61fd6f497dda24b7d0451108c2a",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "a32029c91ffb1798a3a0d8e829a229c0bee3a835",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "7f210273cddfb606659916427e961e361b76c846",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "636d8d61e6ca65837bfff36b2dee7698c8b67875",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "412bbcde8f04ca2426c693af526fe141ba93873c",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "8e999d0f4e87fae40471bd89d0af9bd3330c8896",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "88b693c39ea48694d52e3aeb245b78da6104ec0e",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "8d8978e2eb820dd3c4e9e9a45b45a6727772dedc",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "1524d143bd5dbd46cf71ee8521c222405aa84154",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    },
+    {
+      "commit": "023755a219e8f489d5dc29e416ac376bec42f93a",
+      "comments": 5,
+      "loc": 69,
+      "changed": 0,
+      "new_comments": 0
+    }
+  ]
+}
