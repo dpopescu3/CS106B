@@ -33,7 +33,7 @@ void welcomeAlert(string name, string name2)
     canvas->setBackground("White");
     canvas->setColor("black");
     canvas->setFont("SansSerif-24");
-    canvas->drawString("Welcome " + name + "!", 30, 150);
+    canvas->drawString("Welcome " + name + name2 + "!", 30, 150);
     canvas->drawImage("res/stanford.png", 60, 0);
     canvas->setColor("#008F00"); // green
     double x = 120, y = 25, w = 15, h = 30;
