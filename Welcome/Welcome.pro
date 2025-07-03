@@ -150,4 +150,5 @@ FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & a
     message( "*******************************************************************" )
     error(Exiting. Rename project directory to remove disallowed characters. )
 }
-QMAKE_PRE_LINK += cd \"$$PWD\" && git add . && git commit -m \"Auto-commit from Welcome at \$$(date +%Y-%m-%d\ %H:%M:%S)\" && git push -u origin HEAD || true
+QMAKE_PRE_LINK += bash -c \"cd $$PWD && COUNTER_FILE=.autocommit_counter.txt && if [ -f \$$COUNTER_FILE ]; then COUNT=\$$(cat \$$COUNTER_FILE); else COUNT=0; fi && COUNT=\$$(expr \$$COUNT + 1) && echo \$$COUNT > \$$COUNTER_FILE && git add . \$$COUNTER_FIL]()
+
