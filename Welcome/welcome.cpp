@@ -5,7 +5,6 @@
  * @author Julie Zelenski
  * #version 2024/09
  */
-
 #include <iostream>
 #include "console.h"
 #include "queue.h"
@@ -19,7 +18,6 @@
 #include "splversion.h"
 #include "urlstream.h"
 using namespace std;
-
 void welcomeAlert(string name, string name2)
 {
     GWindow* window = new GWindow;
@@ -48,7 +46,6 @@ void welcomeAlert(string name, string name2)
     window->addToRegion(b, GWindow::REGION_SOUTH);
     window->setVisible(true);
 }
-
 void checkLibraryVersion()
 {
     // Confirm installed library matches version of our Qt install instructions
@@ -67,7 +64,6 @@ void checkLibraryVersion()
         cout << "Installed and expected library version match (" << installed_version << ")" << endl;
     }
 }
-
 int main()
 {
     Queue<string> names = {"Leland", "Stanford", "Junior", "University"};
@@ -78,10 +74,40 @@ int main()
     welcomeAlert(name, name2);
     cout << "All done!" << endl;
     cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
+    cout << "All done!" << endl;
+    cout << "Thank you!"<<endl;
     return 0;
 }
 // I am adding a comment
-
 // Confirm SimpleTest macros are available and compile
 PROVIDED_TEST("SimpleTest of addition") {
     EXPECT_EQUAL(1 + 2, 3);
