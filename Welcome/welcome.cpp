@@ -79,34 +79,7 @@ int main()
     cout << "All done!" << endl;
     cout << "Thank you!"<<endl;
     cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
 
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "All done!" << endl;
-    cout << "Thank you!"<<endl;
-    cout << "Hey"<<endl;
-    cout << "Hey3"<<endl;
 
     return 0;
 }
