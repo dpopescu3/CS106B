@@ -79,7 +79,7 @@ int main()
     }
     welcomeAlert(name, name2);
     if (getenv("SCREENSHOT_MODE")){
-        pause(3000);
+        pause(5000);
     }
     cout << "All done!" << endl;
     cout << "Thank you!"<<endl;
