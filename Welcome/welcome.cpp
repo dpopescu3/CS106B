@@ -72,7 +72,7 @@ int main()
     string name, name2;
     if (getenv("SCREENSHOT_MODE")){
         name = "Jane";
-        name2 = "Stanford";
+        name2 = "Stanford2";
     } else {
        name = getLine("What is your first name?");
        name2 = getLine("What is your last name?");
