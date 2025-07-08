@@ -16,7 +16,7 @@ APP_PID=$!
 
 sleep 2
 
-FILENAME="build_screenshot_$COUNT.png"
+FILENAME="build_screenshot.png"
 echo "Please click the 'Welcome' window to capture the screenshot..."
 screencapture -i "$FILENAME"
 
