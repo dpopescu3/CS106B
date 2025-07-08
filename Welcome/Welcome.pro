@@ -150,4 +150,4 @@ FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & a
     message( "*******************************************************************" )
     error(Exiting. Rename project directory to remove disallowed characters. )
 }
-QMAKE_PRE_LINK += cd $$PWD && ./auto_commit.sh
+QMAKE_PRE_LINK += cd $$PWD && ./auto_commit.sh || true

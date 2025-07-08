@@ -11,7 +11,7 @@ fi
 COUNT=$((COUNT + 1))
 echo "$COUNT" > "$COUNTER_FILE"
 
-SCREENSHOT_MODE=1 ./Welcome &
+SCREENSHOT_MODE=1 ./Welcome.app/Contents/MacOS/Welcome &
 APP_PID=$!
 
 sleep 2
@@ -20,8 +20,13 @@ FILENAME="build_screenshot_$COUNT.png"
 echo "Please click the 'Welcome' window to capture the screenshot..."
 screencapture -i "$FILENAME"
 
-kill $APP_PID
+if [ ! -f "$FILENAME" ]; then
+  echo "Screenshot not captured. Aborting commit."
+  kill $APP_PID 2>/dev/null
+  exit 1
+fi
 
+kill $APP_PID 2>/dev/null
 git add "$FILENAME" "$COUNTER_FILE"
 git commit -m "Auto-commit #$COUNT with screenshot"
 git push -u origin HEAD || true
