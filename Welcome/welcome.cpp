@@ -69,9 +69,18 @@ int main()
     Queue<string> names = {"Leland", "Stanford", "Junior", "University"};
     cout << "Copyright 2024 " << names << endl;
     checkLibraryVersion();
-    string name = getLine("What is your name? I am asking");
-    string name2 = getLine("What is your name? I am asking");
+    string name, name2;
+    if (getenv("SCREENSHOT_MODE")){
+        name = "Jane";
+        name2 = "Stanford";
+    } else {
+       name = getLine("What is your first name?");
+       name2 = getLine("What is your last name?");
+    }
     welcomeAlert(name, name2);
+    if (getenv("SCREENSHOT_MODE")){
+        pause(3000);
+    }
     cout << "All done!" << endl;
     cout << "Thank you!"<<endl;
     cout << "All done!" << endl;
