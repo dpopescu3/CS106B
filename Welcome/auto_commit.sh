@@ -1,6 +1,10 @@
 #!/bin/bash
 
 cd "$(dirname "$0")" || exit 1
+if git diff --quiet HEAD welcome.cpp; then # here we can modify the file for those students edit
+  echo " welcome.cpp unchanged, skipping screenshot + commit."
+  exit 0
+fi
 
 COUNTER_FILE=".autocommit_counter.txt"
 if [ -f "$COUNTER_FILE" ]; then
@@ -15,9 +19,10 @@ SCREENSHOT_MODE=1 ./Welcome.app/Contents/MacOS/Welcome &
 APP_PID=$!
 
 sleep 2
-
-FILENAME="build_screenshot.png"
-echo "Please click the 'Welcome' window to capture the screenshot..."
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+TIMESTAMPUNIX=$(date '+%s')
+FILENAME="welcome_screenshot_$TIMESTAMPUNIX.png"
+echo "Please click the 'Welcome' window to capture the screenshot..." # this message can be changed
 screencapture -i "$FILENAME"
 
 if [ ! -f "$FILENAME" ]; then
@@ -26,7 +31,6 @@ if [ ! -f "$FILENAME" ]; then
   exit 1
 fi
 COMMIT_SOURCE=$(basename "$PWD")
-TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 kill $APP_PID 2>/dev/null
 git add "$FILENAME" "$COUNTER_FILE"  "$0"
 git commit -m "Auto-commit #$COUNT from $COMMIT_SOURCE at $TIMESTAMP"
