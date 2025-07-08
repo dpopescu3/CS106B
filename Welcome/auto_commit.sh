@@ -21,7 +21,7 @@ APP_PID=$!
 sleep 2
 TIMESTAMPUNIX=$(date +%s)
 TIMESTAMP=$(date -r "$TIMESTAMPUNIX" '+%Y-%m-%d %H:%M:%S')
-FILENAME="welcome_screenshot_$TIMESTAMPUNIX.png"
+FILENAME="welcome_screenshot_$COUNT.png"
 echo "Please click the 'Welcome' window to capture the screenshot..." # this message can be changed
 screencapture -i "$FILENAME"
 
