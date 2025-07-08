@@ -25,8 +25,9 @@ if [ ! -f "$FILENAME" ]; then
   kill $APP_PID 2>/dev/null
   exit 1
 fi
-
+COMMIT_SOURCE=$(basename "$PWD")
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 kill $APP_PID 2>/dev/null
-git add "$FILENAME" "$COUNTER_FILE"
-git commit -m "Auto-commit #$COUNT with screenshot"
+git add "$FILENAME" "$COUNTER_FILE"  "$0"
+git commit -m "Auto-commit from $COMMIT_SOURCE at $TIMESTAMP"
 git push -u origin HEAD || true
