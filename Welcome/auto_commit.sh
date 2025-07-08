@@ -29,5 +29,5 @@ COMMIT_SOURCE=$(basename "$PWD")
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 kill $APP_PID 2>/dev/null
 git add "$FILENAME" "$COUNTER_FILE"  "$0"
-git commit -m "Auto-commit $COUNT from $COMMIT_SOURCE at $TIMESTAMP"
+git commit -m "Auto-commit #$COUNT from $COMMIT_SOURCE at $TIMESTAMP"
 git push -u origin HEAD || true
